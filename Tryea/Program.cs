@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Runtime.ConstrainedExecution;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Tryea
 {
@@ -247,11 +244,6 @@ namespace Tryea
                 
                 string[] strs = _str.Split(new string[] { "sin", "cos", "abs" }, StringSplitOptions.RemoveEmptyEntries);
                 
-                //Console.WriteLine(strs.Count());
-                //for(int i = 0; i < strs.Count(); i++)
-                //{
-                //    Console.WriteLine(strs[i]);
-                //}
                 if(strs.Count() > 1 || strs.Count() < 1)
                 {
                     return B4(_str);//?
@@ -589,8 +581,6 @@ namespace Tryea
         
         bool Oper(string _str)
         {
-            //Console.WriteLine("Oper: " + _str);
-
             List<string> Opers = new List<string>();
             Perem_Value = new double[List_Perem.Count];
 
@@ -623,7 +613,6 @@ namespace Tryea
 
             for(int i = 0; i < Opers.Count; i++)
             {
-                //Console.WriteLine("Opers: " + Opers[i]);
                 Opers[i] = Opers[i].Replace(" ", "");
                 string[] U = Opers[i].Split(new string[] { ":" }, StringSplitOptions.None);
                 if(U[0] != "")
@@ -639,12 +628,10 @@ namespace Tryea
                                 {
                                     if(PrCh(P[1]) > -200000000)
                                     {
-                                        //Console.WriteLine("PR " + PrCh(P[1]).ToString());
                                         Perem_Value[List_Perem.IndexOf(P[0])] = PrCh(P[1]);
                                     }
                                     else
                                     {
-                                        //Console.WriteLine(":EGF " + P[1]);
                                         return false;
                                     }
                                 }
@@ -678,7 +665,6 @@ namespace Tryea
                     return false;
                 }
             }
-
             //for(int i = 0; i < Perem_Value.Length; i++)
             //{
             //    Console.WriteLine(List_Perem[i] + " " + Perem_Value[i].ToString());
@@ -688,8 +674,6 @@ namespace Tryea
         
         bool Last(string _str)
         {
-            //Console.WriteLine("Last: " + _str);
-
             _str = _str.Replace(" ", "");
 
             string[] srt = _str.Split(new char[] { ';' }, StringSplitOptions.None);
@@ -721,18 +705,11 @@ namespace Tryea
                     return false;
                 }
             }
-
-            //for(int i = 0; i < List_Perem.Count; i++)
-            //{
-            //    Console.WriteLine("P: " + List_Perem[i]);
-            //}
             return true;
         }
         
         bool Zveno(string _str)
         {
-            //Console.WriteLine("Zveno: " + _str);
-            
             List<string> strs_for_analize = new List<string>();
             List<int> possition_of_F_or_S = new List<int>();
 
@@ -936,17 +913,13 @@ namespace Tryea
                                 {
                                     _str = _str.Remove(0, _str.IndexOf("Begin") + 5); //-Begin
                                     _str = _str.Remove(_str.Length - 3, 3); //-End
-
-                                    //Console.WriteLine("_str: " + _str);
-
+                                    
                                     if (Splt(_str))
                                     {
-                                        //Console.WriteLine("ok");
                                         return true;
                                     }
                                     else
                                     {
-                                        //Console.WriteLine("ne ok");
                                         return false;
                                     }
                                 }
@@ -999,8 +972,7 @@ namespace Tryea
                 "i3;m4;b " +
                 "3:a2=3*4*sin30 4:a3=3^2 5:i=a2*2 6:g=sincos30 5:a25 = a2*6 " +
                 "End";
-
-            //str = Console.ReadLine();
+            
             Console.WriteLine("str: " + str);
             bool lang = F.Language(str);
             if (lang)
