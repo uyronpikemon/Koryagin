@@ -129,6 +129,8 @@ namespace Tryea
 
         double[] Perem_Value;
 
+        int[] deg;
+
         public int Perem(string _str)
         {
 
